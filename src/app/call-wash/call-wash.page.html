@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Call Washeasy
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="font-size: 14px;">
+  
+  <!-- Services -->  
+  <form>
+    <ion-item>
+      <ion-label>
+        เลือกบริการ
+      </ion-label>
+      <ion-select #C multiple="true" okText="ยืนยัน" cancelText="ยกเลิก" (ngModel)="place" (ionChange)="calculateService(C.value);" placeholder="Select">
+        <ion-select-option *ngFor="let x of choice"  value="{{x.choice_id}}">{{x.choice_name}}&nbsp;&nbsp;{{x.choice_price}} Baht</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </form>
+
+  <!-- Address -->
+  <form>
+    <ion-item>
+      <label>
+        ที่อยู่
+      </label>
+    </ion-item>
+    <ion-item id="inputName">
+      <ion-label color="primary">ชื่อ - สกุล :</ion-label>
+      <ion-input type="text" placeholder="วอช อีซี่"></ion-input>
+    </ion-item>
+    <ion-item id="inputTel">
+      <ion-label color="primary">เบอร์โทรศัพท์ :</ion-label>
+      <ion-input type="text" placeholder="081-122-3695"></ion-input>
+    </ion-item>
+    <ion-item id="inputAddress">
+        <ion-label color="primary">ที่อยู่ :</ion-label>
+        <ion-textarea placeholder="หอใน ห้อง 1"></ion-textarea>
+      </ion-item>
+    <ion-item id="inputTextArea">
+      <ion-label color="primary">รายละเอียดเพิ่มเติม :</ion-label>
+      <ion-textarea placeholder="หน้าหอมีแมว 8 ตัว"></ion-textarea>
+    </ion-item>
+  </form>
+
+  <!-- Total Price -->
+  <form>
+    <ion-item>
+      จำนวนเงิน&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="color: brown;">{{place}}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;บาท
+    </ion-item>
+  </form>
+
+  <!-- Payment -->
+    <ion-item> 
+      <ion-label>
+        <p style="margin-bottom: 5px; font-size: 16px; color: black;">วิธีการชำระเงิน</p>
+      <ion-toolbar>
+          <ion-segment>
+            <ion-segment-button value="visa" style="width: 40%; border: 0.5px  solid #333; margin-right: 3px;">
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
+              <ion-label>บัญชี</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="paypal" style="width: 40%; border: 0.5px  solid #333">
+              <ion-icon name="bicycle"></ion-icon>
+              <ion-label>เก็บเงินปลายทาง</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-toolbar>
+      </ion-label>
+    </ion-item>
+</ion-content>
+
+<!-- Footer  -->
+<ion-footer>
+  <ion-toolbar class="ion-text-center">
+    <ion-button expand="block">ยืนยัน</ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+
+
+
+
+<!-- 
+<ion-card>
+    <ion-item>
+        <label>
+            ที่อยู่
+        </label>
+    </ion-item>
+    <ion-card-content>
+        <ion-item id="inputName">
+            <ion-input type="text" placeholder="ชื่อ - นามสกุล"></ion-input>
+          </ion-item>
+          <ion-item id="inputTel">
+            <ion-input type="text" placeholder="เบอร์โทรศัพท์"></ion-input>
+          </ion-item>
+          <ion-item id="inputTextArea">
+            <ion-textarea placeholder="รายละเอียดเพิ่มเติม"></ion-textarea>
+          </ion-item>
+    </ion-card-content>
+  </ion-card> -->
+
+
+
+  <!-- Services -->
+    <!-- <form id="">
+      <h4  style="color:#000000;">
+        เลือกบริการ
+      </h4>
+      <ion-item id="wash">
+        <ion-label>
+          ซักผ้า 50 บาท
+        </ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+      <ion-item id="steam">
+        <ion-label>
+          อบผ้า 50 บาท
+        </ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+      <ion-item id="wring">
+        <ion-label>
+          รีดผ้า 5 บาท/ชิ้น
+        </ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+    </form> -->

@@ -1,0 +1,8 @@
+{
+  "name": "callWash",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "e19545f3"
+}
