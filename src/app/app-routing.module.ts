@@ -15,17 +15,18 @@ const routes: Routes = [
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
   },
-  { 
-    path: 'condition', 
-    loadChildren: './condition/condition.module#ConditionPageModule' 
+  {
+    path: 'condition',
+    loadChildren: './condition/condition.module#ConditionPageModule'
   },
-  { 
-    path: 'call-wash', 
-    loadChildren: './call-wash/call-wash.module#CallWashPageModule' 
+  {
+    path: 'call-wash',
+    loadChildren: './call-wash/call-wash.module#CallWashPageModule'
   },
-  { 
-    path: 'post', 
-    loadChildren: './post/post.module#PostPageModule' }
+  {
+    path: 'post',
+    loadChildren: './post/post.module#PostPageModule'
+  }
 ];
 
 @NgModule({
@@ -34,4 +35,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
