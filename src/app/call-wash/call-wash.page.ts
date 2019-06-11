@@ -28,7 +28,8 @@ export class CallWashPage {
   constructor(public modalController: ModalController) {}
   async presentModal(){
     const modal = await this.modalController.create({
-      component: ModalPagePage
+      component: ModalPagePage,
+      componentProps: { value: 123}
     });
     await modal.present();
   }

@@ -9,7 +9,10 @@ import { NavParams, ModalController } from '@ionic/angular';
 export class ModalPagePage implements OnInit {
  // "value" passed in componentProps
  @Input() value: number;
- constructor(public navParams: NavParams,public modalController:ModalController) {}
+ val;
+ constructor(public navParams: NavParams,public modalController:ModalController) {
+   this.val = this.navParams.get('value');
+ }
  ngOnInit() {
  }
 
