@@ -18,7 +18,7 @@
         เลือกบริการ
       </ion-label>
       <ion-select #C multiple="true" okText="ยืนยัน" cancelText="ยกเลิก" (ngModel)="place"
-        (ionChange)="calculateService(C.value);" placeholder="Select">
+        (ionChange)="calculateService(C.value);" placeholder="เลือก">
         <ion-select-option *ngFor="let x of choice" value="{{x.choice_id}}">
           {{x.choice_name}}&nbsp;&nbsp;{{x.choice_price}} Baht</ion-select-option>
       </ion-select>

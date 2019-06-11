@@ -1,6 +1,7 @@
-import { Component, OnInit, Input  } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, NavController, NavParams } from '@ionic/angular';
 import { ModalPagePage } from '../modal-page/modal-page.page';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-call-wash',
@@ -15,6 +16,8 @@ export class CallWashPage {
   location_detail = "ซอยหลังมอ ทางเข้าร้านจ๊ะโอ๋น";
   place;
   i: any = 0;
+  price_of: any = 0;
+  status_price: any = 0;
 
   choice = [{
     choice_id: 1,
@@ -31,11 +34,11 @@ export class CallWashPage {
   }]
 
   constructor(public modalController: ModalController) {
-   }
+  }
   async presentModal() {
     const modal = await this.modalController.create({
       component: ModalPagePage,
-      componentProps: { 
+      componentProps: {
         location_name: this.location_name,
         addess: this.addess,
         acceptant_name: this.acceptant_name,
@@ -47,15 +50,35 @@ export class CallWashPage {
   }
 
   calculateService(CValue) {
-    for (this.i = 0; this.i < 3; this.i++)
-      if (CValue[this.i] == null)
-        CValue[this.i] = '0';
-      else
-        CValue[this.i] = '1';
+    // for (this.i = 0; this.i < 3; this.i++){
+    //   if (CValue[this.i] == null)
+    //     CValue[this.i] = '0';
+    //   else
+    //     CValue[this.i] = '1';
+    // }
+
+    // for (this.i = 0; this.i < CValue.length; this.i++) {
+    //   if (CValue[this.i] == this.i + 1) {
+    //     this.price_of += this.choice[this.i].choice_price;
+    //   } else {
+    //     this.price_of -= this.choice[this.i].choice_price;
+    //   }
+      // this.price_of += this.i*this.choice[this.i].choice_price
+      // if (CValue[this.i] == null){
+      //   CValue[this.i] = '0';
+      //   this.price_of -= this.choice[this.i].choice_price;
+      // }
+      // else{
+      //   CValue[this.i] = '1';
+      //   this.price_of += this.choice[this.i].choice_price;
+      // }
 
     this.place = CValue.length * 50;
+    // this.place = this.price_of;
     console.log(CValue);
-    console.log("Services :", CValue[0] + CValue[1] + CValue[2]);
+    for (let j: any = 0; j < CValue.length; j++) {
+      console.log("Services :", CValue[j]);
+    }
 
     console.log("Price :", this.place);
   }
