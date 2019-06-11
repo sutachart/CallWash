@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>รายละเอียดการจัดส่ง</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content padding>
+      <ion-grid>
+          <ion-row class="ion-align-items-center">
+              <!-- <ion-col size="3" size-md class="color"></ion-col> -->
+              <ion-col size="12" size-md class="ion-align-self-center blog">
+                  <form>
+                      ส่งที่ : <ion-input placeholder="{{location_name}}"></ion-input>
+                      ที่อยู่ : <ion-input placeholder="{{addess}}"></ion-input>
+                      ชื่อผู้รับ : <ion-input placeholder="{{acceptant_name}}"></ion-input>
+                      เบอร์โทร : <ion-input type="tel" placeholder="{{tel}}"></ion-input>
+                      รายละเอียดเพิ่มเติม : <ion-input placeholder="{{location_detail}}"></ion-input>
+                    </form>
+              </ion-col>
+              <!-- <ion-col size="3"  size-md class="color"></ion-col> -->
+            </ion-row>
+        </ion-grid>
+</ion-content>
+
+<!-- Footer  -->
+<ion-footer>
+    <ion-toolbar class="ion-text-center">
+      <ion-button expand="block" (click)="dismiss()">บันทึก</ion-button>
+    </ion-toolbar>
+  </ion-footer>
