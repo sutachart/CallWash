@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ModalController, NavController } from '@ionic/angular';
+import { ModalPagePage } from '../modal-page/modal-page.page';
 
 @Component({
   selector: 'app-call-wash',
@@ -6,7 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./call-wash.page.scss'],
 })
 export class CallWashPage {
-
   place;
   i:any = 0;
 
@@ -24,8 +25,12 @@ export class CallWashPage {
     choice_price:50
   }]
   
-  constructor() {
-
+  constructor(public modalController: ModalController) {}
+  async presentModal(){
+    const modal = await this.modalController.create({
+      component: ModalPagePage
+    });
+    await modal.present();
   }
   
   calculateService(CValue) {

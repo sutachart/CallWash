@@ -25,7 +25,8 @@ const routes: Routes = [
   },
   { 
     path: 'post', 
-    loadChildren: './post/post.module#PostPageModule' }
+    loadChildren: './post/post.module#PostPageModule' },
+  { path: 'modal-page', loadChildren: './modal-page/modal-page.module#ModalPagePageModule' }
 ];
 
 @NgModule({

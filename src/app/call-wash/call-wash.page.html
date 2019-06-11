@@ -10,21 +10,29 @@
 </ion-header>
 
 <ion-content style="font-size: 14px;">
-  
-  <!-- Services -->  
+
+  <!-- Services -->
   <form>
     <ion-item>
       <ion-label>
         เลือกบริการ
       </ion-label>
-      <ion-select #C multiple="true" okText="ยืนยัน" cancelText="ยกเลิก" (ngModel)="place" (ionChange)="calculateService(C.value);" placeholder="Select">
-        <ion-select-option *ngFor="let x of choice"  value="{{x.choice_id}}">{{x.choice_name}}&nbsp;&nbsp;{{x.choice_price}} Baht</ion-select-option>
+      <ion-select #C multiple="true" okText="ยืนยัน" cancelText="ยกเลิก" (ngModel)="place"
+        (ionChange)="calculateService(C.value);" placeholder="Select">
+        <ion-select-option *ngFor="let x of choice" value="{{x.choice_id}}">
+          {{x.choice_name}}&nbsp;&nbsp;{{x.choice_price}} Baht</ion-select-option>
       </ion-select>
     </ion-item>
   </form>
 
   <!-- Address -->
-  <form>
+  <!-- Item as an Anchor -->
+  <ion-item ionic-button (click)="presentModal()" detail>
+    <ion-label>
+      สถานที่จัดส่ง : บ้าน
+    </ion-label>
+  </ion-item>
+  <!-- <form>
     <ion-item>
       <label>
         ที่อยู่
@@ -39,40 +47,41 @@
       <ion-input type="text" placeholder="081-122-3695"></ion-input>
     </ion-item>
     <ion-item id="inputAddress">
-        <ion-label color="primary">ที่อยู่ :</ion-label>
-        <ion-textarea placeholder="หอใน ห้อง 1"></ion-textarea>
-      </ion-item>
+      <ion-label color="primary">ที่อยู่ :</ion-label>
+      <ion-textarea placeholder="หอใน ห้อง 1"></ion-textarea>
+    </ion-item>
     <ion-item id="inputTextArea">
       <ion-label color="primary">รายละเอียดเพิ่มเติม :</ion-label>
       <ion-textarea placeholder="หน้าหอมีแมว 8 ตัว"></ion-textarea>
     </ion-item>
-  </form>
+  </form> -->
 
   <!-- Total Price -->
   <form>
     <ion-item>
-      จำนวนเงิน&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="color: brown;">{{place}}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;บาท
+      จำนวนเงิน&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label
+        style="color: brown;">{{place}}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;บาท
     </ion-item>
   </form>
 
   <!-- Payment -->
-    <ion-item> 
-      <ion-label>
-        <p style="margin-bottom: 5px; font-size: 16px; color: black;">วิธีการชำระเงิน</p>
+  <ion-item>
+    <ion-label>
+      <p style="margin-bottom: 5px; font-size: 16px; color: black;">วิธีการชำระเงิน</p>
       <ion-toolbar>
-          <ion-segment>
-            <ion-segment-button value="visa" style="width: 40%; border: 0.5px  solid #333; margin-right: 3px;">
-              <ion-icon name="checkmark-circle-outline"></ion-icon>
-              <ion-label>บัญชี</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="paypal" style="width: 40%; border: 0.5px  solid #333">
-              <ion-icon name="bicycle"></ion-icon>
-              <ion-label>เก็บเงินปลายทาง</ion-label>
-            </ion-segment-button>
-          </ion-segment>
-        </ion-toolbar>
-      </ion-label>
-    </ion-item>
+        <ion-segment>
+          <ion-segment-button value="visa" style="width: 40%; border: 0.5px  solid #333; margin-right: 3px;">
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+            <ion-label>บัญชี</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="paypal" style="width: 40%; border: 0.5px  solid #333">
+            <ion-icon name="bicycle"></ion-icon>
+            <ion-label>เก็บเงินปลายทาง</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
+    </ion-label>
+  </ion-item>
 </ion-content>
 
 <!-- Footer  -->
@@ -108,8 +117,8 @@
 
 
 
-  <!-- Services -->
-    <!-- <form id="">
+<!-- Services -->
+<!-- <form id="">
       <h4  style="color:#000000;">
         เลือกบริการ
       </h4>

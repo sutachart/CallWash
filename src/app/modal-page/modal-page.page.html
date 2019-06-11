@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>รายละเอียดการจัดส่ง</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content padding>
+      <ion-grid>
+          <ion-row class="ion-align-items-center">
+              <!-- <ion-col size="3" size-md class="color"></ion-col> -->
+              <ion-col size="12" size-md class="ion-align-self-center blog">
+                  <form>
+                      ที่อยู่ : <ion-input placeholder="Enter Input"></ion-input>
+                      ชื่อ : <ion-input placeholder="Enter Input"></ion-input>
+                      เบอร์โทร : <ion-input placeholder="Enter Input"></ion-input>
+                      รายละเอียดเพิ่มเติม : <ion-input placeholder="Enter Input"></ion-input>
+                    </form>
+              </ion-col>
+              <!-- <ion-col size="3"  size-md class="color"></ion-col> -->
+            </ion-row>
+        </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-button color="secondary" expand="full" (click)="dismiss()">ตกลง</ion-button>
+</ion-footer>
