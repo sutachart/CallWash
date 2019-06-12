@@ -1,65 +1,41 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title>รายละเอียดการจัดส่ง</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding>
-  <ion-grid>
-    <ion-row class="ion-align-items-center">
-      <ion-col size="12" size-md class="ion-align-self-center blog">
-        <form>
-          ส่งที่ : <ion-input placeholder="{{location_name}}"></ion-input>
-          ที่อยู่ : <ion-input placeholder="{{addess}}"></ion-input>
-          ชื่อผู้รับ : <ion-input placeholder="{{acceptant_name}}"></ion-input>
-          เบอร์โทร : <ion-input type="tel" placeholder="{{tel}}"></ion-input>
-          รายละเอียดเพิ่มเติม : <ion-input placeholder="{{location_detail}}"></ion-input>
-        </form>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content> -->
-
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Ionic Storage CRUD
+      รายละเอียดการจัดส่ง
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <ion-item>
-    <ion-label position="fixed">ส่งที่</ion-label>
-    <ion-input [(ngModel)]="newItem.location_name"></ion-input>
+    <ion-label position="fixed">ชื่อสถานที่ :</ion-label>
+    <ion-input [(ngModel)]="newItem.location_name" placeholder='บ้าน,ที่ทำงาน'></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="fixed">ที่อยู่</ion-label>
-    <ion-input [(ngModel)]="newItem.address"></ion-input>
+      <ion-label position="fixed">ที่อยู่ :</ion-label>
+      <ion-textarea clearOnEdit="true" [(ngModel)]="newItem.address" placeholder='อาคาร ชั้นที่ ห้องที่'></ion-textarea>
+    </ion-item>
+
+  <ion-item>
+    <ion-label position="fixed">เบอร์โทร :</ion-label>
+    <ion-input [(ngModel)]="newItem.tel" placeholder='09xxxxxxxx'></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="fixed">เบอร์โทร</ion-label>
-    <ion-input [(ngModel)]="newItem.tel"></ion-input>
+    <ion-label position="fixed">รายละเอียด :</ion-label>
+    <ion-textarea clearOnEdit="true" [(ngModel)]="newItem.location_detail" placeholder='บอกสถานที่ หรืออาคาร เพื่อให้เราหาคุณเจอ'></ion-textarea>
   </ion-item>
 
   <ion-item>
-    <ion-label position="fixed">รายละเอียดเพิ่มเติม</ion-label>
-    <ion-input [(ngModel)]="newItem.location_detail"></ion-input>
+    <ion-label position="fixed">ชื่อผู้รับ :</ion-label>
+    <ion-input [(ngModel)]="newItem.receiver_name" placeholder='น้องฮิปโป'></ion-input>
   </ion-item>
-
-  <ion-item>
-    <ion-label position="fixed">ชื่อผู้รับ</ion-label>
-    <ion-input [(ngModel)]="newItem.receiver_name"></ion-input>
-  </ion-item>
-
-  <ion-button expand="full" (click)="addItem()">Add Item!</ion-button>
 
   <ion-list #mylist>
 
     <ion-list-header>
-      <ion-label>My Items</ion-label>
+      <ion-label>สถานที่ของฉัน</ion-label>
     </ion-list-header>
 
     <ion-item-sliding *ngFor="let item of items">
@@ -79,6 +55,7 @@
           <ion-text color="secondary">
             <p>{{ item.receiver_name }}</p>
           </ion-text>
+
           <p>{{ item.id | date:'short'}}</p>
         </ion-label>
       </ion-item>
@@ -96,7 +73,8 @@
     <ion-toolbar class="ion-text-center">
       <ion-row>
         <ion-col>
-          <ion-button expand="block">บันทึก</ion-button>
+          <!-- <ion-button expand="block">บันทึก</ion-button> -->
+          <ion-button expand="block" (click)="addItem()">บันทึก</ion-button>
         </ion-col>
         <ion-col>
           <ion-button expand="block" color="medium" (click)="dismiss()">ยกเลิก</ion-button>

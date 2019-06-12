@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
 
-import { StorageService ,Item } from '../services/storage.service';
+import { StorageService, Item } from '../services/storage.service';
 import { Platform, ToastController, IonList } from '@ionic/angular';
 
 
@@ -19,7 +19,7 @@ export class ModalPagePage implements OnInit {
   tel;
   location_detail;
 
-  constructor(public navParams: NavParams, public modalController: ModalController,private storageService: StorageService, private plt: Platform, private toastController: ToastController) {
+  constructor(public navParams: NavParams, public modalController: ModalController, private storageService: StorageService, private plt: Platform, private toastController: ToastController) {
     this.location_name = this.navParams.get('location_name');
     this.addess = this.navParams.get('address');
     this.acceptant_name = this.navParams.get('acceptant_name');
@@ -47,13 +47,16 @@ export class ModalPagePage implements OnInit {
   // CREATE
   addItem() {
     // this.newItem.modified = Date.now();
-    this.newItem.id = Date.now();
-
-    this.storageService.addItem(this.newItem).then(item => {
-      this.newItem = <Item>{};
-      this.showToast('Item added!')
-      this.loadItems(); // Or add it to the array directly
-    });
+    if (this.newItem == null) {
+      this.showToast('Empty!')
+    }else if(this.newItem!=null){
+      this.newItem.id = Date.now();
+      this.storageService.addItem(this.newItem).then(item => {
+        this.newItem = <Item>{};
+        this.showToast('Item added!');
+        this.loadItems(); // Or add it to the array directly
+      });
+    }
   }
 
   // READ

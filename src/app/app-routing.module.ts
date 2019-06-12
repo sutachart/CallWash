@@ -26,8 +26,7 @@ const routes: Routes = [
   {
     path: 'post',
     loadChildren: './post/post.module#PostPageModule'
-  },
-  { path: 'test-sqlite', loadChildren: './test-sqlite/test-sqlite.module#TestSQLitePageModule' }
+  }
 ];
 
 @NgModule({
