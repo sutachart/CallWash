@@ -13,9 +13,9 @@
   </ion-item>
 
   <ion-item>
-      <ion-label position="fixed">ที่อยู่ :</ion-label>
-      <ion-textarea clearOnEdit="true" [(ngModel)]="newItem.address" placeholder='อาคาร ชั้นที่ ห้องที่'></ion-textarea>
-    </ion-item>
+    <ion-label position="fixed">ที่อยู่ :</ion-label>
+    <ion-textarea clearOnEdit="true" [(ngModel)]="newItem.address" placeholder='อาคาร ชั้นที่ ห้องที่'></ion-textarea>
+  </ion-item>
 
   <ion-item>
     <ion-label position="fixed">เบอร์โทร :</ion-label>
@@ -24,7 +24,8 @@
 
   <ion-item>
     <ion-label position="fixed">รายละเอียด :</ion-label>
-    <ion-textarea clearOnEdit="true" [(ngModel)]="newItem.location_detail" placeholder='บอกสถานที่ หรืออาคาร เพื่อให้เราหาคุณเจอ'></ion-textarea>
+    <ion-textarea clearOnEdit="true" [(ngModel)]="newItem.location_detail"
+      placeholder='บอกสถานที่ หรืออาคาร เพื่อให้เราหาคุณเจอ'></ion-textarea>
   </ion-item>
 
   <ion-item>
@@ -67,18 +68,18 @@
     </ion-item-sliding>
 
   </ion-list>
-
-  <!-- Footer  -->
-  <ion-footer>
-    <ion-toolbar class="ion-text-center">
-      <ion-row>
-        <ion-col>
-          <!-- <ion-button expand="block">บันทึก</ion-button> -->
-          <ion-button expand="block" (click)="addItem()">บันทึก</ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button expand="block" color="medium" (click)="dismiss()">ยกเลิก</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-toolbar>
-  </ion-footer>
+</ion-content>
+<!-- Footer  -->
+<ion-footer>
+  <!-- <ion-toolbar class="ion-text-center"> -->
+  <ion-row>
+    <ion-col>
+      <!-- <ion-button expand="block">บันทึก</ion-button> -->
+      <ion-button expand="block" (click)="addItem()">บันทึก</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="block" color="medium" (click)="dismiss()">ยกเลิก</ion-button>
+    </ion-col>
+  </ion-row>
+  <!-- </ion-toolbar> -->
+</ion-footer>

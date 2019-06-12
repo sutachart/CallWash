@@ -11,21 +11,9 @@ import { Platform, ToastController, IonList } from '@ionic/angular';
   styleUrls: ['./modal-page.page.scss'],
 })
 export class ModalPagePage implements OnInit {
-  // "value" passed in componentProps
-  @Input() value: number;
-  location_name;
-  addess;
-  acceptant_name;
-  tel;
-  location_detail;
 
   constructor(public navParams: NavParams, public modalController: ModalController, private storageService: StorageService, private plt: Platform, private toastController: ToastController) {
-    this.location_name = this.navParams.get('location_name');
-    this.addess = this.navParams.get('address');
-    this.acceptant_name = this.navParams.get('acceptant_name');
-    this.tel = this.navParams.get('tel');
-    this.location_detail = this.navParams.get('location_detail');
-    this.plt.ready().then(() => {
+   this.plt.ready().then(() => {
       this.loadItems();
     });
   }
