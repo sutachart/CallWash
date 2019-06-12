@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>รายละเอียดการจัดส่ง</ion-title>
   </ion-toolbar>
@@ -7,7 +7,6 @@
 <ion-content padding>
   <ion-grid>
     <ion-row class="ion-align-items-center">
-      <!-- <ion-col size="3" size-md class="color"></ion-col> -->
       <ion-col size="12" size-md class="ion-align-self-center blog">
         <form>
           ส่งที่ : <ion-input placeholder="{{location_name}}"></ion-input>
@@ -17,21 +16,82 @@
           รายละเอียดเพิ่มเติม : <ion-input placeholder="{{location_detail}}"></ion-input>
         </form>
       </ion-col>
-      <!-- <ion-col size="3"  size-md class="color"></ion-col> -->
     </ion-row>
   </ion-grid>
-</ion-content>
+</ion-content> -->
 
-<!-- Footer  -->
-<ion-footer>
-  <ion-toolbar class="ion-text-center">
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block" (click)="update_location()">บันทึก</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button expand="block" color="medium" (click)="dismiss()">ยกเลิก</ion-button>
-      </ion-col>
-    </ion-row>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Ionic Storage CRUD
+    </ion-title>
   </ion-toolbar>
-</ion-footer>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="fixed">ส่งที่</ion-label>
+    <ion-input [(ngModel)]="newItem.title" placeholder="{{location_name}}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="fixed">Value</ion-label>
+    <ion-input [(ngModel)]="newItem.value"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="fixed">Value</ion-label>
+    <ion-input [(ngModel)]="newItem.value"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="fixed">Value</ion-label>
+    <ion-input [(ngModel)]="newItem.value"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="fixed">Value</ion-label>
+    <ion-input [(ngModel)]="newItem.value"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="addItem()">Add Item!</ion-button>
+
+  <ion-list #mylist>
+
+    <ion-list-header>
+      <ion-label>My Items</ion-label>
+    </ion-list-header>
+
+    <ion-item-sliding *ngFor="let item of items">
+
+      <ion-item>
+        <ion-label text-wrap>
+          <h3>{{ item.title }}</h3>
+          <ion-text color="secondary">
+            <p>{{ item.value }}</p>
+          </ion-text>
+          <p>{{ item.modified | date:'short'}}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="secondary" (click)="updateItem(item)">Update</ion-item-option>
+        <ion-item-option color="danger" (click)="deleteItem(item)">Delete</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+
+  <!-- Footer  -->
+  <ion-footer>
+    <ion-toolbar class="ion-text-center">
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block">บันทึก</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" color="medium" (click)="dismiss()">ยกเลิก</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>
