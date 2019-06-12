@@ -1,7 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, NavController, NavParams } from '@ionic/angular';
 import { ModalPagePage } from '../modal-page/modal-page.page';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { Observable } from 'rxjs';
+import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-call-wash',
@@ -9,15 +12,20 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
   styleUrls: ['./call-wash.page.scss'],
 })
 export class CallWashPage {
+  
+  i: any = 0;
+
+  //Address
   location_name = "บ้าน";
   addess = "888/37 ต. ในเมือง อ.เมือง จ.ขอนแก่น";
   acceptant_name = "วิทยา";
   tel = "0954795579";
   location_detail = "ซอยหลังมอ ทางเข้าร้านจ๊ะโอ๋น";
-  place;
-  i: any = 0;
-  price_of: any = 0;
-  status_price: any = 0;
+  
+  //Services
+  price:any; 
+  place:any;
+  select_choice:any ='';
 
   choice = [{
     choice_id: 1,
@@ -33,8 +41,9 @@ export class CallWashPage {
     choice_price: 50
   }]
 
-  constructor(public modalController: ModalController) {
+  constructor(public modalController: ModalController,private router: Router, public navHttp: Http,public http:HttpClient) {
   }
+
   async presentModal() {
     const modal = await this.modalController.create({
       component: ModalPagePage,
@@ -50,37 +59,31 @@ export class CallWashPage {
   }
 
   calculateService(CValue) {
-    // for (this.i = 0; this.i < 3; this.i++){
-    //   if (CValue[this.i] == null)
-    //     CValue[this.i] = '0';
-    //   else
-    //     CValue[this.i] = '1';
-    // }
-
-    // for (this.i = 0; this.i < CValue.length; this.i++) {
-    //   if (CValue[this.i] == this.i + 1) {
-    //     this.price_of += this.choice[this.i].choice_price;
-    //   } else {
-    //     this.price_of -= this.choice[this.i].choice_price;
-    //   }
-      // this.price_of += this.i*this.choice[this.i].choice_price
-      // if (CValue[this.i] == null){
-      //   CValue[this.i] = '0';
-      //   this.price_of -= this.choice[this.i].choice_price;
-      // }
-      // else{
-      //   CValue[this.i] = '1';
-      //   this.price_of += this.choice[this.i].choice_price;
-      // }
-
+    this.select_choice='';
+    // Price
     this.place = CValue.length * 50;
-    // this.place = this.price_of;
-    console.log(CValue);
-    for (let j: any = 0; j < CValue.length; j++) {
-      console.log("Services :", CValue[j]);
-    }
+    this.price = this.place;
 
-    console.log("Price :", this.place);
+    // Service
+    for(this.i=0;this.i<3;this.i++) 
+      if(CValue[this.i]!=undefined)
+        this.select_choice += CValue[this.i];
+      //console.log(CValue[this.i]+CValue[this.i+1]+CValue[this.i+2]);
+
+      console.log('Your select :',this.select_choice);
   }
+    
+  
+  fnInsert() {
+    let url: string = "http://localhost/ionicApp/insert_service.php";
+    let dataJson = new FormData();
+    dataJson.append('serv_price',this.price); // total Price
+    dataJson.append('serv_choice',this.select_choice); // total Choice
 
+    let data:Observable<any> = this.http.post(url, dataJson)
+    data.subscribe(res => {
+        if(res != null)
+          console.log(res);
+    });
+  } 
 }

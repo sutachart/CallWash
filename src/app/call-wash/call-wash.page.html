@@ -30,10 +30,6 @@
   <ion-item ionic-button (click)="presentModal()" detail>
     <ion-label>
       สถานที่จัดส่ง : {{location_name}}
-      ที่อยู่ : {{addess}}
-      เบอร์โทร : {{tel}}
-      รายละเอียด : {{location_detail}}
-      ผู้รับ : {{acceptant_name}}
     </ion-label>
   </ion-item>
   <!-- <form>
@@ -74,11 +70,11 @@
       <p style="margin-bottom: 5px; font-size: 16px; color: black;">วิธีการชำระเงิน</p>
       <ion-toolbar>
         <ion-segment>
-          <ion-segment-button value="visa" style="width: 40%; border: 0.5px  solid #333; margin-right: 3px;">
+          <ion-segment-button style="width: 40%; border: 0.5px  solid #333; margin-right: 3px;">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
             <ion-label>บัญชี</ion-label>
           </ion-segment-button>
-          <ion-segment-button value="paypal" style="width: 40%; border: 0.5px  solid #333">
+          <ion-segment-button style="width: 40%; border: 0.5px  solid #333">
             <ion-icon name="bicycle"></ion-icon>
             <ion-label>เก็บเงินปลายทาง</ion-label>
           </ion-segment-button>
@@ -91,7 +87,7 @@
 <!-- Footer  -->
 <ion-footer>
   <ion-toolbar class="ion-text-center">
-    <ion-button expand="block">ยืนยัน</ion-button>
+    <ion-button expand="block" (click)="fnInsert()">ยืนยัน</ion-button>
   </ion-toolbar>
 </ion-footer>
 
