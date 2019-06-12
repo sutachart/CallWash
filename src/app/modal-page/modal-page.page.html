@@ -31,27 +31,27 @@
 <ion-content>
   <ion-item>
     <ion-label position="fixed">ส่งที่</ion-label>
-    <ion-input [(ngModel)]="newItem.title" placeholder="{{location_name}}"></ion-input>
+    <ion-input [(ngModel)]="newItem.location_name"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="fixed">Value</ion-label>
-    <ion-input [(ngModel)]="newItem.value"></ion-input>
+    <ion-label position="fixed">ที่อยู่</ion-label>
+    <ion-input [(ngModel)]="newItem.address"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="fixed">Value</ion-label>
-    <ion-input [(ngModel)]="newItem.value"></ion-input>
+    <ion-label position="fixed">เบอร์โทร</ion-label>
+    <ion-input [(ngModel)]="newItem.tel"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="fixed">Value</ion-label>
-    <ion-input [(ngModel)]="newItem.value"></ion-input>
+    <ion-label position="fixed">รายละเอียดเพิ่มเติม</ion-label>
+    <ion-input [(ngModel)]="newItem.location_detail"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="fixed">Value</ion-label>
-    <ion-input [(ngModel)]="newItem.value"></ion-input>
+    <ion-label position="fixed">ชื่อผู้รับ</ion-label>
+    <ion-input [(ngModel)]="newItem.receiver_name"></ion-input>
   </ion-item>
 
   <ion-button expand="full" (click)="addItem()">Add Item!</ion-button>
@@ -66,11 +66,20 @@
 
       <ion-item>
         <ion-label text-wrap>
-          <h3>{{ item.title }}</h3>
+          <h3>{{ item.location_name }}</h3>
           <ion-text color="secondary">
-            <p>{{ item.value }}</p>
+            <p>{{ item.address }}</p>
           </ion-text>
-          <p>{{ item.modified | date:'short'}}</p>
+          <ion-text color="secondary">
+            <p>{{ item.tel }}</p>
+          </ion-text>
+          <ion-text color="secondary">
+            <p>{{ item.location_detail }}</p>
+          </ion-text>
+          <ion-text color="secondary">
+            <p>{{ item.receiver_name }}</p>
+          </ion-text>
+          <p>{{ item.id | date:'short'}}</p>
         </ion-label>
       </ion-item>
 

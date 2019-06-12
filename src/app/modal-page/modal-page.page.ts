@@ -26,7 +26,7 @@ export class ModalPagePage implements OnInit {
     this.tel = this.navParams.get('tel');
     this.location_detail = this.navParams.get('location_detail');
     this.plt.ready().then(() => {
-      //this.loadItems();
+      this.loadItems();
     });
   }
   ngOnInit() {
@@ -46,7 +46,7 @@ export class ModalPagePage implements OnInit {
 
   // CREATE
   addItem() {
-    this.newItem.modified = Date.now();
+    // this.newItem.modified = Date.now();
     this.newItem.id = Date.now();
 
     this.storageService.addItem(this.newItem).then(item => {
@@ -65,8 +65,8 @@ export class ModalPagePage implements OnInit {
 
   // UPDATE
   updateItem(item: Item) {
-    item.title = `UPDATED: ${item.title}`;
-    item.modified = Date.now();
+    item.address = `UPDATED: ${item.address}`;
+    // item.modified = Date.now();
 
     this.storageService.updateItem(item).then(item => {
       this.showToast('Item updated!');

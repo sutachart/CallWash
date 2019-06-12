@@ -4,10 +4,16 @@ import { Storage } from '@ionic/storage';
 
 
 export interface Item {
+  // id: number,
+  // title: string,
+  // value: string,
+  // modified: number
   id: number,
-  title: string,
-  value: string,
-  modified: number
+  location_name: string,
+  address: string,
+  tel: string,
+  location_detail: string,
+  receiver_name: string
 }
 
 const ITEMS_KEY = 'my-items';
