@@ -5,6 +5,8 @@ import { NavParams, ModalController, NavController } from '@ionic/angular';
 import { StorageService, Item } from '../services/storage.service';
 import { Platform, ToastController, IonList } from '@ionic/angular';
 
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+
 @Component({
   selector: 'app-modal-page',
   templateUrl: './modal-page.page.html',
@@ -12,8 +14,8 @@ import { Platform, ToastController, IonList } from '@ionic/angular';
 })
 export class ModalPagePage implements OnInit {
 
-  modalTitle:string;
-  modelId:number;
+  modalTitle: string;
+  modelId: number;
 
   constructor(public navParams: NavParams,
     public modalController: ModalController,
@@ -32,6 +34,8 @@ export class ModalPagePage implements OnInit {
     this.modalTitle = this.navParams.data.paramTitle;
 
   }
+
+  
 
   // SQLite
   items: Item[] = [];
@@ -92,25 +96,20 @@ export class ModalPagePage implements OnInit {
   }
   // #SQLite
 
-  async saveData() {
-    const onClosedData: any = this.items;
-    await this.modalController.dismiss(onClosedData);
-  }
-
   dismiss() {
     this.modalController.dismiss();
   }
 
-  addLoc(){
-    this.newItem.location_name[0];
-    this.newItem.tel[0];
-  }
   async closeModal() {
-    const onClosedData: string = this.items[this.items.length-1].address;
+    const onClosedData: string = this.items[this.items.length - 1].location_name
+    +this.items[this.items.length-1].address
+    +this.items[this.items.length-1].tel
+    +this.items[this.items.length-1].location_detail
+    +this.items[this.items.length-1].receiver_name;
     await this.modalController.dismiss(onClosedData);
   }
 
 
-  
+
 
 }

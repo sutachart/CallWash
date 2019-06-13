@@ -28,7 +28,8 @@
   <!-- Address -->
   <ion-item ionic-button (click)="presentModal()" detail>
     <ion-label>
-      <p *ngIf="dataReturned">{{dataReturned}}</p>
+      ส่งที่ : <span *ngIf="dataReturned">{{dataReturned}}</span>
+      <span *ngIf="!dataReturned">โปรดเลือก</span>
       <!-- สถานที่จัดส่ง : {{location_name}}
       ที่อยู่ : {{addess}}
       เบอร์โทร : {{tel}}
