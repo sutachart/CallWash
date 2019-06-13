@@ -1,12 +1,26 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>
+    <!-- <ion-title>
       รายละเอียดการจัดส่ง
-    </ion-title>
+    </ion-title> -->
+    <ion-title>{{modalTitle}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        ID : {{modelId}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="saveData()">Close Modal</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
   <ion-item>
     <ion-label position="fixed">ชื่อสถานที่ :</ion-label>
     <ion-input [(ngModel)]="newItem.location_name" placeholder='บ้าน,ที่ทำงาน'></ion-input>
@@ -33,53 +47,47 @@
     <ion-input [(ngModel)]="newItem.receiver_name" placeholder='น้องฮิปโป'></ion-input>
   </ion-item>
 
-  <ion-list #mylist>
+  <ion-button expand="block" (click)="addItem()">เพิ่ม</ion-button>
 
+  <ion-list #mylist>
     <ion-list-header>
       <ion-label>สถานที่ของฉัน</ion-label>
     </ion-list-header>
 
     <ion-item-sliding *ngFor="let item of items">
-
-      <ion-item>
-        <ion-label text-wrap>
-          <h3>{{ item.location_name }}</h3>
-          <ion-text color="secondary">
-            <p>{{ item.address }}</p>
-          </ion-text>
-          <ion-text color="secondary">
-            <p>{{ item.tel }}</p>
-          </ion-text>
-          <ion-text color="secondary">
-            <p>{{ item.location_detail }}</p>
-          </ion-text>
-          <ion-text color="secondary">
-            <p>{{ item.receiver_name }}</p>
-          </ion-text>
-
-          <p>{{ item.id | date:'short'}}</p>
-        </ion-label>
-      </ion-item>
-
+        <ion-item>
+          <ion-label text-wrap>
+            <h3>{{ item.location_name }}</h3>
+            <ion-text color="secondary">
+              <p>{{ item.address }}</p>
+            </ion-text>
+            <ion-text color="secondary">
+              <p>{{ item.tel }}</p>
+            </ion-text>
+            <ion-text color="secondary">
+              <p>{{ item.location_detail }}</p>
+            </ion-text>
+            <ion-text color="secondary">
+              <p>{{ item.receiver_name }}</p>
+            </ion-text>
+            <p>{{ item.id | date:'short'}}</p>
+          </ion-label>
+        </ion-item>
       <ion-item-options side="end">
         <ion-item-option color="secondary" (click)="updateItem(item)">Update</ion-item-option>
         <ion-item-option color="danger" (click)="deleteItem(item)">Delete</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
-
   </ion-list>
 </ion-content>
+
 <!-- Footer  -->
-<ion-footer>
-  <!-- <ion-toolbar class="ion-text-center"> -->
+<ion-footer style="height: 10%;">
   <ion-row>
     <ion-col>
-      <!-- <ion-button expand="block">บันทึก</ion-button> -->
-      <ion-button expand="block" (click)="addItem()">บันทึก</ion-button>
-    </ion-col>
-    <ion-col>
-      <ion-button expand="block" color="medium" (click)="dismiss()">ยกเลิก</ion-button>
+
+      <ion-button expand="block" color="medium" (click)="closeModal()">back</ion-button>
+      <ion-button expand="block" color="medium" (click)="dismiss()">กลับ</ion-button>
     </ion-col>
   </ion-row>
-  <!-- </ion-toolbar> -->
 </ion-footer>

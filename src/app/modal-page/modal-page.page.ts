@@ -1,9 +1,9 @@
+import { HomePage } from './../home/home.page';
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { NavParams, ModalController } from '@ionic/angular';
+import { NavParams, ModalController, NavController } from '@ionic/angular';
 
 import { StorageService, Item } from '../services/storage.service';
 import { Platform, ToastController, IonList } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-modal-page',
@@ -12,22 +12,29 @@ import { Platform, ToastController, IonList } from '@ionic/angular';
 })
 export class ModalPagePage implements OnInit {
 
-  constructor(public navParams: NavParams, public modalController: ModalController, private storageService: StorageService, private plt: Platform, private toastController: ToastController) {
-   this.plt.ready().then(() => {
+  modalTitle:string;
+  modelId:number;
+
+  constructor(public navParams: NavParams,
+    public modalController: ModalController,
+    private storageService: StorageService,
+    private plt: Platform,
+    private toastController: ToastController,
+    public navCtrl: NavController) {
+    this.plt.ready().then(() => {
       this.loadItems();
     });
   }
+
   ngOnInit() {
-  }
+    console.table(this.navParams);
+    this.modelId = this.navParams.data.paramID;
+    this.modalTitle = this.navParams.data.paramTitle;
 
-  dismiss() {
-    this.modalController.dismiss();
   }
-
 
   // SQLite
   items: Item[] = [];
-
   newItem: Item = <Item>{};
 
   @ViewChild('mylist') mylist: IonList;
@@ -37,7 +44,7 @@ export class ModalPagePage implements OnInit {
     // this.newItem.modified = Date.now();
     if (this.newItem == null) {
       this.showToast('Empty!')
-    }else if(this.newItem!=null){
+    } else if (this.newItem != null) {
       this.newItem.id = Date.now();
       this.storageService.addItem(this.newItem).then(item => {
         this.newItem = <Item>{};
@@ -83,6 +90,27 @@ export class ModalPagePage implements OnInit {
     });
     toast.present();
   }
+  // #SQLite
 
+  async saveData() {
+    const onClosedData: any = this.items;
+    await this.modalController.dismiss(onClosedData);
+  }
+
+  dismiss() {
+    this.modalController.dismiss();
+  }
+
+  addLoc(){
+    this.newItem.location_name[0];
+    this.newItem.tel[0];
+  }
+  async closeModal() {
+    const onClosedData: string = this.items[this.items.length-1].address;
+    await this.modalController.dismiss(onClosedData);
+  }
+
+
+  
 
 }

@@ -4,10 +4,6 @@ import { Storage } from '@ionic/storage';
 
 
 export interface Item {
-  // id: number,
-  // title: string,
-  // value: string,
-  // modified: number
   id: number,
   location_name: string,
   address: string,
@@ -80,5 +76,7 @@ export class StorageService {
       return this.storage.set(ITEMS_KEY, toKeep);
     });
   }
+
+  
 
 }
