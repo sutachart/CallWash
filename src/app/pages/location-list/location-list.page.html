@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>สถานที่ของผู้ใช้</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item lines="none">
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <ion-label>ที่อยู่</ion-label>
+    </ion-item>
+    <ion-card-content class="list_body">
+      <ion-list>
+        <ion-radio-group>
+          <ion-item lines="none">
+            <ion-label>บ้าน</ion-label>
+            <ion-radio slot="start" value="biff" checked></ion-radio>
+          </ion-item>
+
+          <ion-item lines="none"> 
+            <ion-label>ที่ทำงาน</ion-label>
+            <ion-radio slot="start" value="griff"></ion-radio>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-label>บ้านแฟน</ion-label>
+            <ion-radio slot="start" value="buford"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <!-- fab placed to the bottom end -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="tertiary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+
+<ion-footer style="height: 15%;" class="footer_background_color">
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="medium" (click)="buttonClick()">แก้ไข</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="block" color="primary" (click)="buttonClick()">ตกลง</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
