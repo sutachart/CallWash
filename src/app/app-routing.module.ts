@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'developers',
     pathMatch: 'full'
   },
   {
@@ -26,7 +26,13 @@ const routes: Routes = [
   {
     path: 'post',
     loadChildren: './post/post.module#PostPageModule'
-  }
+  },
+  { path: 'location-list', loadChildren: './pages/location-list/location-list.module#LocationListPageModule' },
+  { path: 'location-add-detail', loadChildren: './pages/location-add-detail/location-add-detail.module#LocationAddDetailPageModule' },
+  { path: 'gps-map', loadChildren: './pages/gps-map/gps-map.module#GpsMapPageModule' },
+  { path: 'edit-location-detail', loadChildren: './pages/edit-location-detail/edit-location-detail.module#EditLocationDetailPageModule' },
+  { path: 'developers', loadChildren: './pages/developers/developers.module#DevelopersPageModule' },
+  { path: 'developers/:id', loadChildren: './pages/developer/developer.module#DeveloperPageModule' }
 ];
 
 @NgModule({

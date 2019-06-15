@@ -16,6 +16,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageService } from './services/storage.service';
 
+import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { SQLite } from '@ionic-native/sqlite/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +37,8 @@ import { StorageService } from './services/storage.service';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     StorageService,
+    SQLite,
+    SQLitePorter
   ],
   bootstrap: [AppComponent]
 })
