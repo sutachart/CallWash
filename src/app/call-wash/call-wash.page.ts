@@ -16,28 +16,16 @@ import { AlertController } from '@ionic/angular';
 export class CallWashPage {
 
   dataReturned: any;
-  datetime: string;
-  i: any = 0;
+  datetime: string; // keep Date & Time
+  i: any; // for Loop
 
   //Services
-  price: any;
-  place: any;
-  select_choice: any = '';
-  sel: any = '';
+  price: any; // price of service
+  select: any; // keep number service choice
+  serv_name: any; // keep name service choice
 
-  choice = [{
-    choice_id: 1,
-    choice_name: 'ซัก',
-    choice_price: 50
-  }, {
-    choice_id: 2,
-    choice_name: 'อบ',
-    choice_price: 50
-  }, {
-    choice_id: 3,
-    choice_name: 'รีด',
-    choice_price: 50
-  }]
+  washService: boolean = false;
+  steamService: boolean = false;
 
   constructor(public modalController: ModalController,
     private router: Router,
@@ -65,33 +53,35 @@ export class CallWashPage {
     return await modal.present();
   }
 
-  // Cal function
-  calculateService(CValue) {
-    this.select_choice = '';
+  booleanChange() {
 
-    // Price
-    this.place = CValue.length * 50;
-    this.price = this.place;
-
-    // Service
-    for (this.i = 0; this.i < 3; this.i++)
-      if (CValue[this.i] != undefined)
-        this.select_choice += CValue[this.i];
-
-    if (this.select_choice == 1) this.sel = 'ซัก';
-    if (this.select_choice == 12) this.sel = 'ซัก,อบ';
-    if (this.select_choice == 13) this.sel = 'ซัก,รีด';
-    if (this.select_choice == 123) this.sel = 'ซัก,อบ,รีด';
-    if (this.select_choice == 2) this.sel = 'อบ';
-    if (this.select_choice == 23) this.sel = 'อบ,รีด';
-    if (this.select_choice == 3) this.sel = 'รีด';
-    console.log('Your choice :', this.sel);
-    console.log('Your select :', this.select_choice);
+    // Service & Price
+    this.price = 0;
+    if (this.washService == true) {
+      this.select = '1';
+      this.price += 50;
+    }
+    if (this.steamService == true) {
+      this.select = '2';
+      this.price += 50;
+    }
+    if (this.washService == true && this.steamService == true) {
+      this.select = '12';
+    }
+    if (this.select == 1) this.serv_name = 'ซัก';
+    if (this.select == 2) this.serv_name = 'อบ';
+    if (this.select == 12) this.serv_name = 'ซัก,อบ';
 
     //  Current Date time
     let date = new Date().toLocaleString();
     this.datetime = date;
-    console.log(this.datetime);
+
+    console.log('Wash :', this.washService);
+    console.log('Steam :', this.steamService);
+    console.log('Service :', this.select);
+    console.log('Price :', this.price);
+    console.log('Datetime :', this.datetime);
+
   }
 
   // Alert confirm
@@ -99,7 +89,7 @@ export class CallWashPage {
     const alert = await this.alertController.create({
       header: 'ยืนยันการเรียก',
       // subHeader: 'Sub header',
-      message: 'ราคา :' + this.place + '<br>บริการ :' + this.sel,
+      message: '<br>บริการ : ' + this.serv_name + '<br> ' + 'ราคา : ' + this.price,
       buttons: [
         {
           text: 'Cancel',
@@ -109,11 +99,12 @@ export class CallWashPage {
           text: 'Confirm',
           role: 'confirm',
           handler: () => {
+
             console.log("Confirm!");
             let url: string = "http://localhost/ionicApp/insert_service.php";
             let dataJson = new FormData();
             dataJson.append('serv_price', this.price); // total Price
-            dataJson.append('serv_choice', this.select_choice); // total Choice
+            dataJson.append('serv_choice', this.select); // total Choice
             dataJson.append('serv_date', this.datetime); // date time
 
             let data: Observable<any> = this.http.post(url, dataJson)
@@ -123,13 +114,12 @@ export class CallWashPage {
             });
 
             this.router.navigateByUrl('/home');
+
+
           }
         }
-
       ]
     });
     await alert.present();
   }
-
-
 }
