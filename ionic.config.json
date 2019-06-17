@@ -1,7 +1,8 @@
 {
   "name": "callWash",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular",
   "id": "e19545f3"

@@ -4,6 +4,7 @@ import { DatabaseService, Dev } from './../../services/database.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-developer',
   templateUrl: './developer.page.html',
@@ -50,6 +51,6 @@ export class DeveloperPage implements OnInit {
     });
   }
 
-  
+
 
 }
